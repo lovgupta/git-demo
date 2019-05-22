@@ -1,0 +1,183 @@
+Download
+
+Github for windows from git-scm.com
+
+git help
+git help config
+
+Configurations:
+
+Global
+=====
+git config --global user.name "Lovey Gupta"
+git config --global user.email "lovey.cs.miet@gmail.com"
+git config --global --list
+cat ~/.gitconfig
+
+
+Existing Project
+===============
+cd /cygdrive/e/workspaceSTS/course-api
+git init
+Note :The above command will create a .git folder
+
+New Project
+==========
+cd /cygdrive/e/workspaceSTS
+git init git-demo
+
+
+
+
+First Commit
+===========
+cd git-demo
+vi README.txt
+
+$ git status
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+On branch master
+
+Initial commit
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+        README.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+Moving the file to staging area
+
+$ git add README.txt
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+On branch master
+
+Initial commit
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+
+        new file:   README.txt
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+git commit -m "Initial commit"
+clear
+git status
+
+
+Modify the file 
+
+vi README.txt
+git status
+git add README.txt
+git status
+git commit -m "Adding Author"
+git status
+
+Shortcut 
+git commit -am "Adding Creation Date"
+
+
+Add a new file and modify README.txt
+vi README.txt
+vi index.html
+
+git status
+git add index.html
+git add README.txt
+git commit -m "Added index page"
+git status
+
+To add all modified files in staging area in one go
+
+git add .
+
+to unstage a file
+-----------------
+vi README.txt
+git add README.txt
+git reset HEAD README.txt
+
+to checkout the file latest version/ To revert the changes
+------------------------------------
+git checkout -- README.txt
+
+
+Gitting History
+==============
+
+git log
+git log help
+git log --oneline --color --graph --decorate
+
+Removing a file
+==============
+
+vi bad.file
+git add .
+git commit -m "Added bad file"
+git remove bad.file
+rm bad.file
+git status
+git add -u
+git commit -m "Removed bad file"
+
+
+Moving a file
+============
+
+mkdir web
+git mv index.html web/index.html
+git commit -m "Moved index file to web"
+
+
+Ignoring files to get commit accidently
+=======================================
+
+vi application.log
+git status
+vi .gitignore (type *.log) 
+git status
+
+now commit .gitignore file
+
+
+===========================================================================
+
+Working Remotely
+================
+
+1. Generate a ssh key of your computer
+cd ~
+mkdir .ssh
+cd .ssh
+ssh-keygen -t rsa -C "lovey.cs.miet@gmail.com"
+When it prompt for file name. give anything e.g. id_rsa , it will then ask for paraphrase, give anything e.g. love
+
+above command will generate 2 files
+id_rsa  id_rsa.pub
+
+
+
+2. Create an account on github
+3. Goto account settings and Add your id_rsa.pub to github
+
+ssh -T git@github.com
+
+4. Create a GIT Reposity e.g. git-demo
+
+cd /cygdrive/e/workspaceSTS/git-demo
+
+type Below commands is taken from the github new repository page
+git remote add origin git@github.com:lovgupta/git-demo.git
+
+$ git remote -v
+origin  git@github.com:lovgupta/git-demo.git (fetch)
+origin  git@github.com:lovgupta/git-demo.git (push)
+
+
+git push -u origin master
+Note : In above command the origin is the remote location and master is the local=
